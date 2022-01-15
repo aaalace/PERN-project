@@ -1,0 +1,49 @@
+.modal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    padding-top: 5rem;
+}
+
+.modal-body {
+    display: flex;
+    position: relative;
+    width: 50vw;
+    height: 200px;
+    border-radius: 30px;
+    background-color: rgb(255, 255, 255);
+    border: 12px solid;
+    border-color: rgba(125, 67, 141, 1);
+}
+
+.savemod {
+    height: 35px;
+    width: 35px;
+    border-radius: 0 0 0 30px;
+    background-color: rgba(125, 67, 141, 1);
+    color:rgb(255, 255, 255);
+    font-size: large;
+    border: 0;
+}
+
+.rename {
+    margin: 10px;
+    font-size: 2.4vw;
+}
+
+.mod_el {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.modal_header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
