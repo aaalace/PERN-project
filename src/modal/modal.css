@@ -16,7 +16,7 @@
     width: 50vw;
     height: 200px;
     border-radius: 30px;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(238, 196, 234);
     border: 12px solid;
     border-color: rgba(125, 67, 141, 1);
 }
@@ -46,4 +46,14 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
+}
+
+.add-desc {
+    background-color: rgb(125, 67, 141);
+    color: rgb(255, 255, 255);
+    width: 80px;
+    height: 30px;
+    margin-top: .3rem;
+    border-radius: 5px;
+    border: 0
 }

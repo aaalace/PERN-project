@@ -19,19 +19,32 @@ body {
 }
 
 .wrapper-s {
+  border-radius: 30px;
   margin-top: 5vh;
   margin-left: 5vw;
   width: 90vw;
   height: 110vh;
   background-color: rgba(255, 255, 255, 0.356);
+  margin-bottom: 5vh;
 }
 
 .wrapper-l {
+  border-radius: 30px;
   margin-top: 5vh;
   margin-left: 5vw;
   width: 90vw;
   height: 90vh;
   background-color: rgba(255, 255, 255, 0.356);
+}
+
+.wrapper-3 {
+  border-radius: 30px;
+  margin-top: 5vh;
+  margin-left: 5vw;
+  width: 90vw;
+  background-color: rgba(255, 255, 255, 0.356);
+  padding-bottom: 3vh;
+  margin-bottom: 5vh;
 }
 
 h1 {
@@ -86,7 +99,7 @@ h1 {
   margin-bottom: .5rem;
   background-color: rgba(255, 0, 0, 0.2);
   color: rgba(255, 255, 255, 0.3);
-  font-size: 2.5vh
+  font-size: 1.5vw
 }
 
 .not-done-s {
@@ -111,10 +124,11 @@ h1 {
   margin-bottom: .5rem;
   background-color: rgba(255, 0, 0, 0.2);
   color: white;
-  font-size: 2.5vh
+  font-size: 1.5vw
 }
 
 .ul-l {
+  margin-top: 6vh;
   list-style: 'none';
   padding-left: 20%;
   padding-right: 20%;
@@ -175,6 +189,26 @@ h1 {
   background-repeat: no-repeat;
 }
 
+.pen-check {
+  background: url(images/check.png);
+  border-color: rgba(255, 255, 255, 0.253);
+  width: 30px;
+  height: 30px;
+  margin-right: 1rem;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.cancel {
+  background: url(images/cancel.png);
+  border-color: rgba(255, 255, 255, 0.253);
+  width: 30px;
+  height: 30px;
+  margin-right: 1rem;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
 [data-tooltip] {
   position: relative;
  }
@@ -194,4 +228,12 @@ h1 {
 [data-tooltip]:hover::after {
 opacity: 1;
 top: 2.2em;
+}
+
+.ren_input {
+  border-color: rgb(255, 67, 141);
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 5px;
+  color: rgb(125, 67, 141);
+  font-size: 15px;
 }

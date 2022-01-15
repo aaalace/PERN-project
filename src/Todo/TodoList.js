@@ -17,7 +17,8 @@ function TodoList(props) {
                     onChange={props.onToggle}
                     media={props.media}>
                     </TodoItem>
-                }})
+                }
+                return null})
             }
         </ul>
     )
