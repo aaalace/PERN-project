@@ -6,4 +6,4 @@ CREATE TABLE todos(
     pages INT,
     completed BIT default 'FALSE',
     ren BIT default 'FALSE'
-)
+)   
