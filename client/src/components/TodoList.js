@@ -1,12 +1,13 @@
-import React from "react"
+import React, {useCallback, useEffect, useState} from "react"
 import TodoItem from "./TodoItem"
 import propTypes from "prop-types"
 
-function TodoList(props) {
+function TodoList(props){
     let cls = 'ul-l'
     if(props.media === 'small'){
         cls = 'ul-s'
     }
+    
     return (
         <ul className={cls}>
             {props.todos.map((todo) => {
@@ -25,7 +26,6 @@ function TodoList(props) {
 }
 
 TodoList.propTypes = {
-    todos: propTypes.arrayOf(propTypes.object).isRequired,
     onToggle: propTypes.func.isRequired,
     page: propTypes.number.isRequired,
     media: propTypes.string.isRequired

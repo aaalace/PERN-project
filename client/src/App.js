@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useCallback, useEffect, useState} from "react"
 import TodoList from "./components/TodoList"
 import Context from "./context"
 import AddTodo from "./components/AddTodo"
@@ -7,12 +7,17 @@ import Modal from "./modal/Modal"
 import {useMediaQuery} from 'react-responsive';
 
 function App() {
-  let [todos, setTodos] = React.useState([])
-  let [isOpen, setOpen] = React.useState(false)
-  let [todo_title, setTitle] = React.useState(false)
-  let [page_cur, setPage] = React.useState(1)
-
+  let [todos, setTodos] = useState([])
+  let [isOpen, setOpen] = useState(false)
+  let [todo_title, setTitle] = useState(false)
+  let [page_cur, setPage] = useState(1)
+  
   const small = useMediaQuery({ query: '(max-width: 950px)' })
+  let list_med = 'large' 
+  let wrap_cl = "wrapper-l"
+  if (small){wrap_cl = "wrapper-s"
+            list_med = "small"}
+  if (todos.length > 24){wrap_cl = "wrapper-3"}
 
   function toggleTodo(id) {
     setTodos( 
@@ -29,12 +34,19 @@ function App() {
       setTodos([])
     }
     else{
-    let pg = todos.filter(todo => todo.id === id)[0]
-    pg = Number(pg.page)
-    setTodos(todos.filter(todo => todo.id !== id))
-    if (pg === 1 && todos.length > 8){todos[8].page = 1}
-    if (pg === 2 && todos.length > 16){todos[16].page = 2}
-    if (pg === 3 && todos.length > 24){todos[24].page = 3}
+      async function delTodo() {
+        let response = await fetch(`http://localhost:5000/todos/${id.toString()}`, {
+          "method": "DELETE"
+        })
+        response = await response.json()
+        setTodos(todos.filter(todo => todo.id !== id))
+        let pg = todos.filter(todo => todo.id === id)[0]
+        pg = Number(pg.page)
+        if (pg === 1 && todos.length > 8){todos[8].page = 1}
+        if (pg === 2 && todos.length > 16){todos[16].page = 2}
+        if (pg === 3 && todos.length > 24){todos[24].page = 3}
+      }
+      delTodo()
     }
   }
 
@@ -59,7 +71,7 @@ function App() {
   }
 
   function addTodo(title){
-    let a = todos.length ? todos[todos.length - 1].id + 1 : 0
+    let a = todos.length ? todos[todos.length - 1].id + 1 : 1
     let p = Math.floor(todos.length / 8) + 1
     if (p > 3){p = 3}
     setTodos(todos.concat({
@@ -75,11 +87,21 @@ function App() {
     setPage(value)
   }
 
-  let list_med = 'large' 
-  let wrap_cl = "wrapper-l"
-  if (small){wrap_cl = "wrapper-s"
-            list_med = "small"}
-  if (todos.length > 24){wrap_cl = "wrapper-3"}
+  const getAllTodos = useCallback(() => {
+    async function fetchMyAPI() {
+        let response = await fetch("http://localhost:5000/todos")
+        response = await response.json()
+        setTodos(response)
+    }
+  
+    fetchMyAPI()
+    }, [])
+
+  useEffect(() => {
+      getAllTodos()
+    }, [getAllTodos])
+
+  console.log('APP', todos)
   return (
     <Context.Provider value={[{removeTodo}, {editTodo}, {isOpen}, {getEdit}, {todo_title}]}>
         <div className={wrap_cl}>

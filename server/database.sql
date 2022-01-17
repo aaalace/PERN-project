@@ -1,9 +1,9 @@
 CREATE DATABASE pernproject;
 
 CREATE TABLE todos(
-    id SERIAL PRIMARY KEY,
-    title VARCHAR(255),
+    id INT PRIMARY KEY,
+    title TEXT,
     pages INT,
-    completed BIT default 'FALSE',
-    ren BIT default 'FALSE'
+    completed BOOLEAN default 'FALSE',
+    ren BOOLEAN default 'FALSE'
 )   
