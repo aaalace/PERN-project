@@ -18,7 +18,7 @@ export default class Modal extends React.Component {
                                     <h1 className="rename">{(this.context[4].todo_title).toString()}</h1>
                                     <button className="add-desc"><nobr>Add info</nobr></button>
                                 </div>
-                                <button className="savemod" onClick={this.context[3].getEdit}>&times;</button>
+                                <button className="savemod" onClick={it}>&times;</button>
                             </div>
                         </div>
                     </div>

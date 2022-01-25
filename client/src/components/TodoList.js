@@ -1,6 +1,7 @@
-import React, {useCallback, useEffect, useState} from "react"
+import React from "react"
 import TodoItem from "./TodoItem"
 import propTypes from "prop-types"
+import {useSelector} from 'react-redux'
 
 function TodoList(props){
     let cls = 'ul-l'
@@ -8,26 +9,28 @@ function TodoList(props){
         cls = 'ul-s'
     }
     
-    return (
-        <ul className={cls}>
-            {props.todos.map((todo) => {
-                if(props.page === todo.page){
+    const todos = useSelector(state => state)
+
+    try {
+        return (
+            <ul className={cls}>
+                {todos.map((todo) => {
                     return <TodoItem 
                     todo={todo} 
                     key={todo.id} 
-                    onChange={props.onToggle}
+                    pages={props.pages}
                     media={props.media}>
-                    </TodoItem>
+                    </TodoItem>})
                 }
-                return null})
-            }
-        </ul>
-    )
+            </ul>
+        )
+    } catch (error) {
+        return null
+    }
 }
 
 TodoList.propTypes = {
-    onToggle: propTypes.func.isRequired,
-    page: propTypes.number.isRequired,
+    pages: propTypes.number.isRequired,
     media: propTypes.string.isRequired
 }
 

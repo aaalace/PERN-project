@@ -1,16 +1,17 @@
 import React, {useState} from "react"
+import {useDispatch} from "react-redux"
 
-function AddTodo({onCreate, onClear, todos}) {
-    const [id, setID] = useState(1)
+function AddTodo() {
+    const dispatch = useDispatch()
     const [title, setValue] = useState('')
-    const [pages, setPages] = useState(1)
-    const [completed, setCompleted] = useState(false)
-    const [ren, setRen] = useState(false)
+    const [disable, setDisable] = useState(true)
 
-    let clear_color = 'rgba(183, 139, 196, 0.678)'
-    let disable = true
-    if(todos.length > 0){clear_color = 'rgb(125, 67, 141)'
-                        disable = false}
+    const [pages, setPages] = useState(1)
+
+    let clear_color = 'rgb(125, 67, 141)'
+    if(disable){
+        clear_color = 'rgba(183, 139, 196, 0.678)'
+    }
 
     const style = {
         input: {
@@ -48,17 +49,30 @@ function AddTodo({onCreate, onClear, todos}) {
         e.preventDefault()
         try {
             if (title.trim()) {
-            setID(id => id + 1)
-            const body = {id, title, pages, completed, ren}
-            await fetch("http://localhost:5000/todos", {
-                        "method": "POST",
-                        "headers": {"Content-Type": "application/json"},
-                        "body": JSON.stringify(body)
-                        })
-            console.log('added item')
-            setValue('')
-            onCreate(title)
-        }}
+                const body = {title, pages, completed: false, ren: false}
+                await fetch("http://localhost:5000/todos", {
+                            "method": "POST",
+                            "headers": {"Content-Type": "application/json"},
+                            "body": JSON.stringify(body)
+                            })
+                setValue('')
+                get_last_posted_id_and_send()
+            }
+        }
+        catch (error) {
+            console.error(error.message)
+        }
+    }
+
+    const get_last_posted_id_and_send = async e => {
+        try {
+            let response = await fetch("http://localhost:5000/todos/last", {
+                            "method": "GET"
+                            })
+            let create = await response.json()
+            dispatch({type: "ADD TODO", payload: create})
+            setDisable(false)
+        }
         catch (error) {
             console.error(error.message)
         }
@@ -68,12 +82,9 @@ function AddTodo({onCreate, onClear, todos}) {
         e.preventDefault()
         try {
             if(window.confirm('Are you sure you want to delete all items?')){
-                await fetch("http://localhost:5000/todos", {
-                            "method": "DELETE"
-                            })
-                console.log('delete all items')
-                onClear('all')
+                dispatch({type: "DELETE ALL TODOS", payload: ''})
                 setValue('')
+                setDisable(true)
             }
         }
         catch (error) {

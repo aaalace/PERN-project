@@ -36,8 +36,14 @@ app.get("/todos", async(req, res) => {
 app.get("/todos/:id", async(req, res) => {
     try {
         const {id} = req.params
-        const todo = await pool.query('SELECT * FROM todo WHERE id = $1', [id])
-        res.json(todo.rows[0])
+        if(id == 'last'){
+            const todo = await pool.query('SELECT * FROM todo WHERE id=(SELECT max(id) FROM todo)')
+            res.json(todo.rows[0])
+        }
+        else{
+            const todo = await pool.query('SELECT * FROM todo WHERE id = $1', [id])
+            res.json(todo.rows[0])
+        }
     } catch (error) {
         console.error(error.message)
     }
@@ -47,7 +53,7 @@ app.get("/todos/:id", async(req, res) => {
 app.put("/todos/:id", async(req, res) => {
     try {
         const {id} = req.params
-        const {title} = req.body
+        const title = req.body.title
         await pool.query('UPDATE todo SET title = $1 WHERE id = $2', [title, id])
         res.json("updated")
     } catch (error) {
@@ -75,6 +81,9 @@ app.delete("/todos", async(req, res) => {
         console.error(error.message)
     }
 })
+
+// toggle todo
+
 
 
 
