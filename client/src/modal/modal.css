@@ -14,7 +14,8 @@
     display: flex;
     position: relative;
     width: 50vw;
-    height: 200px;
+    height: 50vh;
+    min-height: 40px;
     border-radius: 30px;
     background-color: rgb(238, 196, 234);
     border: 12px solid;
@@ -56,4 +57,20 @@
     margin-top: .3rem;
     border-radius: 5px;
     border: 0
+}
+
+.modal_info {
+    width: 80%;
+    height: 100%;
+    margin: auto auto;
+    vertical-align: middle;
+    background-color:rgb(255, 255, 255);
+    border-radius: 10px;
+  }
+  
+.modal_info_p {
+    padding: 10px;
+    margin: 0;
+    font-size: 1.8vw;
+    white-space: pre-wrap
 }

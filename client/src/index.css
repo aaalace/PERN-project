@@ -18,26 +18,8 @@ body {
   background-repeat: no-repeat;
 }
 
-.wrapper-s {
-  border-radius: 30px;
-  margin-top: 5vh;
-  margin-left: 5vw;
-  width: 90vw;
-  height: 110vh;
-  background-color: rgba(255, 255, 255, 0.356);
-  margin-bottom: 5vh;
-}
-
-.wrapper-l {
-  border-radius: 30px;
-  margin-top: 5vh;
-  margin-left: 5vw;
-  width: 90vw;
-  height: 90vh;
-  background-color: rgba(255, 255, 255, 0.356);
-}
-
-.wrapper-3 {
+.wrapper {
+  min-height: 87vh;
   border-radius: 30px;
   margin-top: 5vh;
   margin-left: 5vw;
@@ -138,6 +120,7 @@ h1 {
   list-style: 'none';
   padding-left: 10%;
   padding-right: 10%;
+  margin-top: 4vh;
 }
 
 .name_input {
@@ -236,4 +219,16 @@ top: 2.2em;
   border-radius: 5px;
   color: rgb(125, 67, 141);
   font-size: 15px;
+}
+
+.empty {
+  display: block;
+  text-align: center;
+  margin-top: 5%;
+}
+
+.loading {
+  display: block;
+  margin: 0 auto;
+  margin-top: 5%;
 }

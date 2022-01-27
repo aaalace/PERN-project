@@ -34,8 +34,8 @@ function TodoItem({todo, media}) {
         } 
     }
 
-    const toggleTodo = (id) => {
-        dispatch({type: "TOGGLE TODO", payload: {id}})
+    const toggleTodo = (id, completed) => {
+        dispatch({type: "TOGGLE TODO", payload: {id, completed}})
     }
 
     const removeTodo = (id) => {
@@ -70,15 +70,14 @@ function TodoItem({todo, media}) {
         }
         }
 
-    const openModal = (id, title) => {
-        // setOpen(true)
-        // setTitle(title)
+    const openModal = (id, title, description) => {
+        dispatch({type: "OPEN MODAL", payload: {id, title, description}})
     }
     
     return (
         <li className={classes.join(' ')}>
             <span className={span_cls.join(' ')}>
-                <input type="checkbox" checked={todo.completed} className="name_input" onChange={() => toggleTodo(todo.id)}></input>
+                <input type="checkbox" checked={todo.completed} className="name_input" onChange={() => toggleTodo(todo.id, todo.completed)}></input>
 
                 &nbsp;
 
@@ -91,7 +90,7 @@ function TodoItem({todo, media}) {
                 {todo.ren ? <button className="pen-check" onClick={() => checkClick(todo.id, true)} data-tooltip={tooltips[4]}></button> : 
                 <button className="pen" onClick={() => checkClick(todo.id, 'mid')} data-tooltip={tooltips[1]}></button>}
 
-                <button className="show_info" onClick={() => openModal(todo.id, todo.title)} data-tooltip={tooltips[2]}></button> 
+                <button className="show_info" onClick={() => openModal(todo.id, todo.title, todo.description)} data-tooltip={tooltips[2]}></button> 
 
                 <button className="rm" onClick={() => removeTodo(todo.id)} data-tooltip={tooltips[3]}></button>
             </div>

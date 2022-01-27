@@ -1,12 +1,17 @@
 import React, {useState} from "react"
-import {useDispatch} from "react-redux"
+import {useDispatch, useSelector} from "react-redux"
 
-function AddTodo() {
+function AddTodo(props) {
+    const todos = useSelector(state => state.todos)
     const dispatch = useDispatch()
     const [title, setValue] = useState('')
     const [disable, setDisable] = useState(true)
-
-    const [pages, setPages] = useState(1)
+    if(todos.length > 0 & disable){
+        setDisable(false)
+    }
+    if(todos.length === 0 & !disable){
+        setDisable(true)
+    }
 
     let clear_color = 'rgb(125, 67, 141)'
     if(disable){
@@ -49,7 +54,7 @@ function AddTodo() {
         e.preventDefault()
         try {
             if (title.trim()) {
-                const body = {title, pages, completed: false, ren: false}
+                const body = {title, pages: props.pages, completed: false, ren: false, description: ''}
                 await fetch("http://localhost:5000/todos", {
                             "method": "POST",
                             "headers": {"Content-Type": "application/json"},
@@ -71,7 +76,6 @@ function AddTodo() {
                             })
             let create = await response.json()
             dispatch({type: "ADD TODO", payload: create})
-            setDisable(false)
         }
         catch (error) {
             console.error(error.message)
@@ -84,7 +88,6 @@ function AddTodo() {
             if(window.confirm('Are you sure you want to delete all items?')){
                 dispatch({type: "DELETE ALL TODOS", payload: ''})
                 setValue('')
-                setDisable(true)
             }
         }
         catch (error) {

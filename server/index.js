@@ -13,9 +13,10 @@ app.post("/todos", async(req, res) => {
         const pages = req.body.pages;
         const completed = req.body.completed;
         const ren = req.body.ren;
+        const description = req.body.description
         const newTodo = await pool.query(
-        'INSERT INTO todo (title, pages, completed, ren) VALUES($1, $2, $3, $4) RETURNING *', 
-        [title, pages, completed, ren])
+        'INSERT INTO todo (title, pages, completed, ren, description) VALUES($1, $2, $3, $4, $5) RETURNING *', 
+        [title, pages, completed, ren, description])
         res.json(newTodo.rows[0])
     } catch (error) {
         console.error(error.message)
@@ -49,13 +50,28 @@ app.get("/todos/:id", async(req, res) => {
     }
 })
 
-// update todo title
+// update todo title or completed
 app.put("/todos/:id", async(req, res) => {
     try {
-        const {id} = req.params
-        const title = req.body.title
-        await pool.query('UPDATE todo SET title = $1 WHERE id = $2', [title, id])
-        res.json("updated")
+        console.log(req.body.action)
+        if(req.body.action == 'rename'){
+            const {id} = req.params
+            const title = req.body.title
+            await pool.query('UPDATE todo SET title = $1 WHERE id = $2', [title, id])
+            res.json("updated")
+        }
+        if(req.body.action == 'toggle'){
+            const {id} = req.params
+            const completed = !req.body.completed
+            await pool.query('UPDATE todo SET completed = $1 WHERE id = $2', [completed, id])
+            res.json("updated")
+        }
+        if(req.body.action == 'description'){
+            const {id} = req.params
+            const description = req.body.description
+            await pool.query('UPDATE todo SET description = $1 WHERE id = $2', [description.toString(), id])
+            res.json("updated")
+        }
     } catch (error) {
         console.error(error.message)
     }
@@ -81,11 +97,6 @@ app.delete("/todos", async(req, res) => {
         console.error(error.message)
     }
 })
-
-// toggle todo
-
-
-
 
 
 app.listen(5000, () => {
