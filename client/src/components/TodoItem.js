@@ -47,7 +47,7 @@ function TodoItem({todo, media}) {
         }
 
     const checkClick = (id, arg) => {
-        if(arg == 'mid'){
+        if(arg === 'mid'){
             dispatch({type: "IS ON RENAME TODO", payload: {id}})
         }
         else{
@@ -78,9 +78,6 @@ function TodoItem({todo, media}) {
         <li className={classes.join(' ')}>
             <span className={span_cls.join(' ')}>
                 <input type="checkbox" checked={todo.completed} className="name_input" onChange={() => toggleTodo(todo.id, todo.completed)}></input>
-
-                &nbsp;
-
                 {todo.ren ? <input maxLength="20" className="ren_input" value={value} onChange={event => setValue(event.target.value)} onKeyDown={handleKeyDown}></input>
                 : <i>{todo.title}</i>}
             </span>

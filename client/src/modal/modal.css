@@ -14,7 +14,7 @@
     display: flex;
     position: relative;
     width: 50vw;
-    height: 50vh;
+    height: 70vh;
     min-height: 40px;
     border-radius: 30px;
     background-color: rgb(238, 196, 234);
@@ -52,7 +52,7 @@
 .add-desc {
     background-color: rgb(125, 67, 141);
     color: rgb(255, 255, 255);
-    width: 80px;
+    width: 100px;
     height: 30px;
     margin-top: .3rem;
     border-radius: 5px;
@@ -63,14 +63,57 @@
     width: 80%;
     height: 100%;
     margin: auto auto;
-    vertical-align: middle;
-    background-color:rgb(255, 255, 255);
+    vertical-align: middle; 
     border-radius: 10px;
   }
   
 .modal_info_p {
-    padding: 10px;
-    margin: 0;
-    font-size: 1.8vw;
-    white-space: pre-wrap
+    width: 100%;
+    height: 100%;
+    outline: none;
+    resize: none;
+    background-color:rgba(240, 248, 255, 0);
+    border: 0;
+    font-size: 2.5vh;
+    margin-top: 2.5rem;
+    color: rgb(125, 67, 141)
+}
+
+::-webkit-scrollbar {
+    background-color: rgb(238, 196, 234);
+    border-radius: 7px;
+}
+
+::-webkit-scrollbar-button {
+    background-color: rgb(125, 67, 141);
+    border-radius: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgb(125, 67, 141);
+    border-radius: 7px;
+}
+
+.modal_input {
+    width: 99%;
+    height: 99%;
+    outline: none;
+    resize: none;
+    background-color:rgba(240, 248, 255, 0.863);
+    font-size: 2.5vh;
+    margin-top: 2.5rem;
+    color: rgb(125, 67, 141);
+    border-radius: 10px;
+    border: 3px solid;
+    border-color: rgb(125, 67, 141);
+}
+
+.modal_cancel-rename {
+    background-color: rgb(125, 67, 141);
+    color: rgb(255, 255, 255);
+    width: 80px;
+    height: 30px;
+    margin-top: .3rem;
+    border-radius: 5px;
+    border: 0
 }

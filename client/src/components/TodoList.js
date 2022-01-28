@@ -17,11 +17,11 @@ function TodoList(props){
         Axios.get('http://localhost:5000/todos').then((response) => {
 
             const ordered = response.data
-            function compare( a, b ) {
-                if ( a.id < b.id ){
+            function compare(a, b) {
+                if (a.id < b.id){
                   return -1
                 }
-                if ( a.id > b.id ){
+                if (a.id > b.id){
                   return 1
                 }
                 return 0
@@ -39,7 +39,7 @@ function TodoList(props){
                   currentDate = Date.now()
                 } while (currentDate - date < milliseconds)
               }
-            // sleep(5000)
+            // sleep(3000)
             setIsLoading(false)
         })
     }

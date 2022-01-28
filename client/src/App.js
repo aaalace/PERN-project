@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from "react"
+import React, {useState} from "react"
 import {useMediaQuery} from 'react-responsive'
-import {useSelector, useDispatch} from "react-redux"
+import {useSelector} from "react-redux"
 import TodoList from "./components/TodoList"
 import AddTodo from "./components/AddTodo"
 import SwitchPage from "./components/Switcher"
@@ -31,8 +31,8 @@ function App() {
         <div className="work-bar">
           <AddTodo pages={Number(page_cur)}></AddTodo>
           <TodoList pages={Number(page_cur)} media={list_med}></TodoList>
+          <Modal></Modal>
         </div>
-        <Modal></Modal>
       </div>
   );
 }
