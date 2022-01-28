@@ -14,7 +14,7 @@ function TodoList(props){
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        Axios.get('http://localhost:5000/todos').then((response) => {
+        Axios.get('/todos').then((response) => {
 
             const ordered = response.data
             function compare(a, b) {

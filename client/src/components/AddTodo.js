@@ -55,7 +55,7 @@ function AddTodo(props) {
         try {
             if (title.trim()) {
                 const body = {title, pages: props.pages, completed: false, ren: false, description: ''}
-                await fetch("http://localhost:5000/todos", {
+                await fetch("/todos", {
                             "method": "POST",
                             "headers": {"Content-Type": "application/json"},
                             "body": JSON.stringify(body)
@@ -71,7 +71,7 @@ function AddTodo(props) {
 
     const get_last_posted_id_and_send = async e => {
         try {
-            let response = await fetch("http://localhost:5000/todos/last", {
+            let response = await fetch("/todos/last", {
                             "method": "GET"
                             })
             let create = await response.json()

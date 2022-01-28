@@ -15,7 +15,7 @@ export function modalReduser(state = defaultParams, action){
         case "ADD INFO":
             console.log('info', action.payload.description)
             async function addInfo() {
-                let response = await fetch(`http://localhost:5000/todos/${state.id}`, {
+                let response = await fetch(`/todos/${state.id}`, {
                     "method": "PUT",
                     "headers": {"Content-Type": "application/json"},
                     "body": JSON.stringify({action: 'description', description: action.payload.description})

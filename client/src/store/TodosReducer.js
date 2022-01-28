@@ -14,7 +14,7 @@ export function todosReduser(state = [], action){
             
         case "DELETE ALL TODOS":
             async function delTodos() {
-                let response = await fetch("http://localhost:5000/todos", {
+                let response = await fetch("/todos", {
                     "method": "DELETE"
                     })
                 response = await response.json()
@@ -25,7 +25,7 @@ export function todosReduser(state = [], action){
         
         case "DELETE TODO":
             async function delTodo() {
-                let response = await fetch(`http://localhost:5000/todos/${action.payload.id.toString()}`, {
+                let response = await fetch(`/todos/${action.payload.id.toString()}`, {
                   "method": "DELETE"
                 })
                 response = await response.json()
@@ -37,7 +37,7 @@ export function todosReduser(state = [], action){
 
         case "TOGGLE TODO":
           async function toggleTodo() {
-            let response = await fetch(`http://localhost:5000/todos/${action.payload.id.toString()}`, {
+            let response = await fetch(`/todos/${action.payload.id.toString()}`, {
                 "method": "PUT",
                 "headers": {"Content-Type": "application/json"},
                 "body": JSON.stringify({action: 'toggle', completed: action.payload.completed})
@@ -50,7 +50,7 @@ export function todosReduser(state = [], action){
             
         case "RENAME TODO":
           async function renameTodo() {
-              let response = await fetch(`http://localhost:5000/todos/${action.payload.id.toString()}`, {
+              let response = await fetch(`/todos/${action.payload.id.toString()}`, {
                   "method": "PUT",
                   "headers": {"Content-Type": "application/json"},
                   "body": JSON.stringify({action: 'rename', title: action.payload.title})
