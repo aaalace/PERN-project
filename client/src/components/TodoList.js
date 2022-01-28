@@ -14,8 +14,9 @@ function TodoList(props){
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
+        console.log(0)
         Axios.get('/todos').then((response) => {
-
+            console.log(1)
             const ordered = response.data
             function compare(a, b) {
                 if (a.id < b.id){
@@ -27,10 +28,12 @@ function TodoList(props){
                 return 0
               }
             ordered.sort(compare)
+            console.log(2)
 
             for(let todo in ordered){
                 dispatch({type: "ADD TODO", payload: ordered[todo]})
             }
+            console.log(3)
 
             function sleep(milliseconds) {
                 const date = Date.now()
