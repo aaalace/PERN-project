@@ -1,7 +1,21 @@
 {
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": "16.13.2",
+    "npm": "8.3.0"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "heroku-postbuild": "cd client && npm install && npm run build"
+  },
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^14.3.2",
     "express": "^4.17.2",
     "pg": "^8.7.1"
-  }
+  },
+  "proxy": "http://localhost:5000"
 }
