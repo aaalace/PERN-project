@@ -1,8 +1,6 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: Menlo, monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -18,20 +16,15 @@ body {
   background-repeat: no-repeat;
 }
 
-.wrapper-s {
+.wrapper {
+  min-height: 87vh;
+  border-radius: 30px;
   margin-top: 5vh;
   margin-left: 5vw;
   width: 90vw;
-  height: 110vh;
   background-color: rgba(255, 255, 255, 0.356);
-}
-
-.wrapper-l {
-  margin-top: 5vh;
-  margin-left: 5vw;
-  width: 90vw;
-  height: 90vh;
-  background-color: rgba(255, 255, 255, 0.356);
+  padding-bottom: 3vh;
+  margin-bottom: 5vh;
 }
 
 h1 {
@@ -73,7 +66,7 @@ h1 {
   margin-bottom: .5rem;
   background-color: rgba(255, 0, 0, 0.2);
   color: rgba(255, 255, 255, 0.3);
-  font-size: 2vh
+  font-size: 3vw
 }
 
 .done-l {
@@ -86,7 +79,7 @@ h1 {
   margin-bottom: .5rem;
   background-color: rgba(255, 0, 0, 0.2);
   color: rgba(255, 255, 255, 0.3);
-  font-size: 2.5vh
+  font-size: 1.5vw
 }
 
 .not-done-s {
@@ -98,7 +91,7 @@ h1 {
   margin-bottom: .5rem;
   background-color: rgba(255, 0, 0, 0.2);
   color: white;
-  font-size: 2vh
+  font-size: 3vw
 }
 
 .not-done-l {
@@ -111,10 +104,11 @@ h1 {
   margin-bottom: .5rem;
   background-color: rgba(255, 0, 0, 0.2);
   color: white;
-  font-size: 2.5vh
+  font-size: 1.5vw
 }
 
 .ul-l {
+  margin-top: 6vh;
   list-style: 'none';
   padding-left: 20%;
   padding-right: 20%;
@@ -124,6 +118,7 @@ h1 {
   list-style: 'none';
   padding-left: 10%;
   padding-right: 10%;
+  margin-top: 4vh;
 }
 
 .name_input {
@@ -140,6 +135,14 @@ h1 {
 .head {
   display: flex;
   justify-content: space-between;
+}
+
+.footer {
+  position: fixed;
+  left: 1%;
+  bottom: 3%;
+  height: 30px;
+  width: 100%;
 }
 
 .switcher {
@@ -175,6 +178,26 @@ h1 {
   background-repeat: no-repeat;
 }
 
+.pen-check {
+  background: url(images/check.png);
+  border-color: rgba(255, 255, 255, 0.253);
+  width: 30px;
+  height: 30px;
+  margin-right: 1rem;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.cancel {
+  background: url(images/cancel.png);
+  border-color: rgba(255, 255, 255, 0.253);
+  width: 30px;
+  height: 30px;
+  margin-right: 1rem;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
 [data-tooltip] {
   position: relative;
  }
@@ -194,4 +217,68 @@ h1 {
 [data-tooltip]:hover::after {
 opacity: 1;
 top: 2.2em;
+}
+
+.ren_input {
+  border-color: rgb(255, 67, 141);
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 5px;
+  color: rgb(125, 67, 141);
+  font-size: 15px;
+}
+
+.empty {
+  display: block;
+  text-align: center;
+  margin-top: 5%;
+}
+
+.loading {
+  display: block;
+  margin: 0 auto;
+  margin-top: 5%;
+}
+
+/* footer */
+.footer-list {
+  display: inline-grid;
+  grid-auto-flow: row;
+  grid-gap: 24px;
+  justify-items: center;
+  margin: auto;
+  list-style: none;
+}
+
+@media (min-width: 500px) {
+  .footer-list {
+    grid-auto-flow: column;
+  }
+}
+
+.footer-text {
+  color: white;
+  text-decoration: none;
+  box-shadow: inset 0 -1px 0 hsla(0, 0%, 100%, 0.4);
+}
+
+.footer-text:hover {
+  box-shadow: inset 0 -0.2em 0 hsla(0, 0%, 100%, 0.4);
+}
+
+.footer-item {
+  text-decoration: none;
+}
+
+.footer-item:last-child {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+} 
+
+.footer-container {
+  display: flex;
+  height: 10vh;
+  width: 100%;
+  background-color: rgba(139, 67, 141, 0.507);
+  line-height: 1.3;
+  font-family: Menlo, monospace;
 }
