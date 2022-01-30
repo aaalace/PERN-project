@@ -22,6 +22,7 @@ if(process.env.NODE_ENV == "production"){
 }
 
 
+
 // add todo
 app.post("/todos", async(req, res) => {
     try {
@@ -42,7 +43,7 @@ app.post("/todos", async(req, res) => {
 // get all todos
 app.get("/todos", async(req, res) => {
     try {
-        res.json({"1": "2"})
+        res.json({'1': pool})
         const allTodos = await pool.query('SELECT * FROM todo')
     } catch (error) {
         console.error(error.message)
