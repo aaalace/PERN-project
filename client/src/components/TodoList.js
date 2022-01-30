@@ -14,9 +14,14 @@ function TodoList(props){
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
+<<<<<<< HEAD
         console.log(0)
         Axios.get('/todos').then((response) => {
             console.log(1)
+=======
+        Axios.get('/todos').then((response) => {
+
+>>>>>>> 13a0ec02914e8b11af9a38dad88b88e53eaf94aa
             const ordered = response.data
             function compare(a, b) {
                 if (a.id < b.id){
@@ -28,12 +33,18 @@ function TodoList(props){
                 return 0
               }
             ordered.sort(compare)
+<<<<<<< HEAD
             console.log(2)
+=======
+>>>>>>> 13a0ec02914e8b11af9a38dad88b88e53eaf94aa
 
             for(let todo in ordered){
                 dispatch({type: "ADD TODO", payload: ordered[todo]})
             }
+<<<<<<< HEAD
             console.log(3)
+=======
+>>>>>>> 13a0ec02914e8b11af9a38dad88b88e53eaf94aa
 
             function sleep(milliseconds) {
                 const date = Date.now()
