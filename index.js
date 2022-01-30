@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 3000
 
 app.use(cors())
 app.use(express.json())
-app.use(express.static(path.join(__dirname, "client/build")))
+// app.use(express.static(path.join(__dirname, "client/build")))
 
 if(process.env.NODE_ENV == "production"){
     // server static content
@@ -44,8 +44,7 @@ app.post("/todos", async(req, res) => {
 app.get("/todos", async(req, res) => {
     try {
         console.log('check get all')
-        const allTodos = await pool.query('SELECT * FROM todo')
-        res.json(allTodos.rows)
+        res.json({'1': '1', '2': '2'})
     } catch (error) {
         console.error(error.message)
     }
