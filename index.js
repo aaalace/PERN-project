@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 3000
 
 app.use(cors())
 app.use(express.json())
-// app.use(express.static(path.join(__dirname, "client/build")))
+app.use(express.static(path.join(__dirname, "client/build")))
 
 if(process.env.NODE_ENV == "production"){
     // server static content
@@ -30,7 +30,6 @@ app.post("/todos", async(req, res) => {
         const completed = req.body.completed;
         const ren = req.body.ren;
         const description = req.body.description
-        console.log('check add')
         const newTodo = await pool.query(
         'INSERT INTO todo (title, pages, completed, ren, description) VALUES($1, $2, $3, $4, $5) RETURNING *', 
         [title, pages, completed, ren, description])
@@ -43,8 +42,8 @@ app.post("/todos", async(req, res) => {
 // get all todos
 app.get("/todos", async(req, res) => {
     try {
-        console.log('check get all')
-        res.json({'1': '1', '2': '2'})
+        res.json({"1": "2"})
+        const allTodos = await pool.query('SELECT * FROM todo')
     } catch (error) {
         console.error(error.message)
     }
