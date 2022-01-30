@@ -11,7 +11,7 @@ function TodoList(props){
     }
 
     const dispatch = useDispatch()
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         Axios.get('/todos').then((response) => {
