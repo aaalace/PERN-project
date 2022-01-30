@@ -3,7 +3,7 @@ const app = express();
 const cors = require("cors")
 const pool = require('./db')
 const path = require("path")
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 3000
 
 // process.env.PORT
 // process.env.MODE_ENV => production or undenfined
@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 5000
 
 app.use(cors())
 app.use(express.json())
-// app.use(express.static(path.join(__dirname, "client/build")))
+app.use(express.static(path.join(__dirname, "client/build")))
 
 if(process.env.NODE_ENV == "production"){
     // server static content
@@ -112,10 +112,6 @@ app.delete("/todos", async(req, res) => {
     } catch (error) {
         console.error(error.message)
     }
-})
-
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "client/build/index.html"))
 })
 
 app.listen(PORT, () => {
