@@ -51,7 +51,6 @@ app.get("/todos", async(req, res) => {
 // get todo by id
 app.get("/todos/:id", async(req, res) => {
     try {
-        res.json({'1': req})
         const {id} = req.params
         if(id == 'last'){
             const todo = await pool.query('SELECT * FROM todo WHERE id=(SELECT max(id) FROM todo)')
