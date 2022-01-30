@@ -12,11 +12,7 @@ ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <App/>
-<<<<<<< HEAD
-      {/* <Footer></Footer> */}
-=======
       <Footer></Footer>
->>>>>>> 13a0ec02914e8b11af9a38dad88b88e53eaf94aa
     </BrowserRouter>
   </Provider>,
   document.getElementById('root')
