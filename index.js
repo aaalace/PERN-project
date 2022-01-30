@@ -69,7 +69,6 @@ app.get("/todos/:id", async(req, res) => {
 // update todo title or completed
 app.put("/todos/:id", async(req, res) => {
     try {
-        console.log(req.body.action)
         if(req.body.action == 'rename'){
             const {id} = req.params
             const title = req.body.title
