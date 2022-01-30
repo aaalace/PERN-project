@@ -16,30 +16,26 @@ function TodoList(props){
     useEffect(() => {
         Axios.get('/todos').then((response) => {
             const ordered = response.data
-            function compare(a, b) {
-                if (a.id < b.id){
-                  return -1
-                }
-                if (a.id > b.id){
-                  return 1
-                }
-                return 0
-              }
-            ordered.sort(compare)
-
-            for(let todo in ordered){
-                dispatch({type: "ADD TODO", payload: ordered[todo]})
+            if(ordered.length === 0){
+                setIsLoading(false)
             }
-
-            function sleep(milliseconds) {
-                const date = Date.now()
-                let currentDate = null
-                do {
-                  currentDate = Date.now()
-                } while (currentDate - date < milliseconds)
-              }
-            // sleep(3000)
-            setIsLoading(false)
+            else{
+                function compare(a, b) {
+                    if (a.id < b.id){
+                      return -1
+                    }
+                    if (a.id > b.id){
+                      return 1
+                    }
+                    return 0
+                  }
+                ordered.sort(compare)
+    
+                for(let todo in ordered){
+                    dispatch({type: "ADD TODO", payload: ordered[todo]})
+                }
+                setIsLoading(false)
+            }
         })
     }
     , [])

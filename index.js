@@ -21,15 +21,13 @@ if(process.env.NODE_ENV == "production"){
     app.use(express.static(path.join(__dirname, "client/build")))
 }
 
-
-
 // add todo
 app.post("/todos", async(req, res) => {
     try {
-        const title = req.body.title
-        const pages = req.body.pages
-        const completed = req.body.completed
-        const ren = req.body.ren
+        const title = req.body.title;
+        const pages = req.body.pages;
+        const completed = req.body.completed;
+        const ren = req.body.ren;
         const description = req.body.description
         const newTodo = await pool.query(
         'INSERT INTO todo (title, pages, completed, ren, description) VALUES($1, $2, $3, $4, $5) RETURNING *', 
@@ -53,6 +51,7 @@ app.get("/todos", async(req, res) => {
 // get todo by id
 app.get("/todos/:id", async(req, res) => {
     try {
+        res.json({'1': req})
         const {id} = req.params
         if(id == 'last'){
             const todo = await pool.query('SELECT * FROM todo WHERE id=(SELECT max(id) FROM todo)')
