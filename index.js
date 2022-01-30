@@ -43,7 +43,7 @@ app.post("/todos", async(req, res) => {
 // get all todos
 app.get("/todos", async(req, res) => {
     try {
-        res.json({'1': pool})
+        res.json({'1': pool.query('SELECT * FROM todo')})
         const allTodos = await pool.query('SELECT * FROM todo')
     } catch (error) {
         console.error(error.message)
