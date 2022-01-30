@@ -1,7 +1,7 @@
 CREATE DATABASE pernproject;
 
 CREATE TABLE todo(
-    id INT PRIMARY KEY,
+    id serial PRIMARY KEY,
     title TEXT,
     pages INT,
     completed BOOLEAN default 'FALSE',

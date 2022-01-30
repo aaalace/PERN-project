@@ -14,10 +14,8 @@ function TodoList(props){
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        console.log('1')
         Axios.get('/todos').then((response) => {
             const ordered = response.data
-            console.log(ordered)
             function compare(a, b) {
                 if (a.id < b.id){
                     return -1
@@ -28,7 +26,6 @@ function TodoList(props){
                 return 0
                 }
             ordered.sort(compare)
-            console.log('3')
                   
             for(let todo in ordered){
                 dispatch({type: "ADD TODO", payload: ordered[todo]})
@@ -39,7 +36,6 @@ function TodoList(props){
     , [])
 
     const todos = useSelector(state => state.todos)
-    console.log(isLoading)
     if(isLoading){
         return (<img className="loading" src={require('../images/loading.gif')} alt="loading..." />)
     }

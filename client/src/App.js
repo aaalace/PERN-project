@@ -9,6 +9,7 @@ import Modal from "./modal/Modal"
 function App() {
 
   const todos = useSelector(state => state.todos)
+  console.log(todos)
 
   let [page_cur, setPage] = useState(1)
   
@@ -21,7 +22,6 @@ function App() {
     setPage(value)
   }
 
-  console.log('APP', todos)
   return (
       <div className="wrapper">
         <div className="head">

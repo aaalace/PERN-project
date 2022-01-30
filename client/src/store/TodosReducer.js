@@ -66,8 +66,6 @@ export function todosReduser(state = [], action){
             {id: todo.id, title: todo.title, pages: todo.pages, completed: todo.completed, ren: !todo.ren, description: todo.description} : todo)))
         
         case "ADD DESCRIPTION":
-          console.log('desc', state)
-          console.log('desc', action.payload)
           return (state.map((todo => todo.id === action.payload.id ? 
             {id: todo.id, title: todo.title, pages: todo.pages, completed: todo.completed, ren: todo.ren, description: action.payload.description} : todo)))
 
