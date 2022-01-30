@@ -11,11 +11,10 @@ function TodoList(props){
     }
 
     const dispatch = useDispatch()
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         Axios.get('/todos').then((response) => {
-
             const ordered = response.data
             function compare(a, b) {
                 if (a.id < b.id){
