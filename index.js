@@ -26,10 +26,10 @@ if(process.env.NODE_ENV == "production"){
 // add todo
 app.post("/todos", async(req, res) => {
     try {
-        const title = req.body.title;
-        const pages = req.body.pages;
-        const completed = req.body.completed;
-        const ren = req.body.ren;
+        const title = req.body.title
+        const pages = req.body.pages
+        const completed = req.body.completed
+        const ren = req.body.ren
         const description = req.body.description
         const newTodo = await pool.query(
         'INSERT INTO todo (title, pages, completed, ren, description) VALUES($1, $2, $3, $4, $5) RETURNING *', 
@@ -43,8 +43,8 @@ app.post("/todos", async(req, res) => {
 // get all todos
 app.get("/todos", async(req, res) => {
     try {
-        res.json({'1': pool.query('SELECT * FROM todo')})
         const allTodos = await pool.query('SELECT * FROM todo')
+        res.json(allTodos.rows)
     } catch (error) {
         console.error(error.message)
     }
