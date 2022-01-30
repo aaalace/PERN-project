@@ -16,13 +16,8 @@ function TodoList(props){
     useEffect(() => {
         console.log('1')
         Axios.get('/todos').then((response) => {
-            console.log('1')
             const ordered = response.data
-            if(ordered.length === 0){
-                setIsLoading(false)
-                console.log('2')
-            }
-            else{
+            console.log(ordered)
             function compare(a, b) {
                 if (a.id < b.id){
                     return -1
@@ -39,7 +34,6 @@ function TodoList(props){
                 dispatch({type: "ADD TODO", payload: ordered[todo]})
             }
             setIsLoading(false)
-            }
         })
     }
     , [])
