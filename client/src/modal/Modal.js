@@ -46,7 +46,7 @@ function Modal(){
         
     }
 
-    if(true){
+    if(modal.open){
     const description = reformat_description() 
     return(
         <div className="modal">
@@ -57,7 +57,7 @@ function Modal(){
                             <h1 className="rename">{(modal.name).toString()}</h1>
                             <button className="add-desc" onClick={addInfo}><nobr>{onRename ? 'Save info' : bt_name}</nobr></button>
                             &nbsp;
-                            {onRename ? <button className="modal_cancel-rename" onClick={cancelRename}>&times;</button>
+                            {onRename ? <button className="modal_cancel-rename" onClick={cancelRename}>Cancel</button>
                             : null}
                         </div>
                         <button className="savemod" onClick={closeModal}>&times;</button>

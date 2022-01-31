@@ -247,7 +247,6 @@ top: 2.2em;
   justify-items: center;
   margin: auto;
   list-style: none;
-  padding: 0;
 }
 
 @media (min-width: 500px) {
@@ -277,10 +276,9 @@ top: 2.2em;
 
 .footer-container {
   display: flex;
-  min-height: 10vh;
+  height: 10vh;
   width: 100%;
   background-color: rgba(139, 67, 141, 0.507);
   line-height: 1.3;
   font-family: Menlo, monospace;
-  margin: 0 auto;
 }
